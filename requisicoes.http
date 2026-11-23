@@ -1,0 +1,49 @@
+### 1. Metadados do serviço
+GET http://127.0.0.1:8000/diagnostico/modelo
+User-Agent: Tester-Audit-Agent
+Accept: application/json
+
+### 2. Predição - passageira da primeira classe
+POST http://127.0.0.1:8000/predict
+User-Agent: Tester-Audit-Agent
+Content-Type: application/json
+
+{
+  "pclass": 1,
+  "sex": "female",
+  "age": 35,
+  "sib_sp": 1,
+  "parch": 0,
+  "fare": 53.1,
+  "embarked": "S"
+}
+
+### 3. Predição - passageiro da terceira classe
+POST http://127.0.0.1:8000/predict
+User-Agent: Tester-Audit-Agent
+Content-Type: application/json
+
+{
+  "pclass": 3,
+  "sex": "male",
+  "age": 22,
+  "sib_sp": 0,
+  "parch": 0,
+  "fare": 7.25,
+  "embarked": "S"
+}
+
+### 4. Entrada inválida - idade deve ser numérica
+POST http://127.0.0.1:8000/predict
+User-Agent: Tester-Audit-Agent
+Content-Type: application/json
+
+{
+  "pclass": 1,
+  "sex": "female",
+  "age": "invalido",
+  "sib_sp": 1,
+  "parch": 0,
+  "fare": 53.1,
+  "embarked": "S"
+}
